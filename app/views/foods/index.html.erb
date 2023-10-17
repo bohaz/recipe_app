@@ -2,11 +2,30 @@
  <p> Name: <%= @user.name %> ID: <%= @user.id %>  </p>
 
 <%= link_to 'Add Food', new_food_path %>
-
-<ul>
-  <% @foods.each do |f| %>
-    <li><%= f.name %></li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Measurement unit</th>
+      <th>Unit price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.quantity %></td>
+        <td><%= food.measurement_unit %></td>
+        <td>$ <%= food.price %></td>
+        <td> DELETE LINK </td>
+           
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'return', root_path %>
+
+
