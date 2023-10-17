@@ -1,5 +1,5 @@
 <h1>Welcome <%= @user.name %> </h1>
-
+<p>(This user has the id: <%= @user.id %>)</p>
 
 <% if user_signed_in? %>
   <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
