@@ -1,0 +1,21 @@
+<%# path: app/views/foods/new.html.erb %>
+
+<%= form_for @food do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :measurement_unit %>
+    <%= f.text_field :measurement_unit %>
+  </p>
+  <p>
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </p>
+  <p>
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity %>
+  </p>
+  <%= f.submit %>
+<% end %>
