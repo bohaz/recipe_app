@@ -7,7 +7,7 @@
   </p>
   <p>
     <%= f.label :measurement_unit %>
-    <%= f.text_field :measurement_unit %>
+    <%= f.select :measurement_unit, options_for_select(['ounces', 'pounds', 'grams', 'kilograms', 'liters', 'gallons', 'units'], 'units') %>
   </p>
   <p>
     <%= f.label :price %>
@@ -19,3 +19,5 @@
   </p>
   <%= f.submit %>
 <% end %>
+
+<%= link_to 'return', root_path %>
