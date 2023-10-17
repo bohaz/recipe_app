@@ -4,10 +4,6 @@ class FoodsController < ApplicationController
     @foods = Food.all.where(user_id: @user.id)
   end
 
-  def show
-    @food = Food.find(params[:id])
-  end
-
   def new
     @user = current_user
     @food = Food.new
@@ -22,6 +18,12 @@ class FoodsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @food = Food.find(params[:id])
+    @food.destroy
+    redirect_to foods_path
   end
 
   private

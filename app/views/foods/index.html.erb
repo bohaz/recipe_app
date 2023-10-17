@@ -2,29 +2,37 @@
  <p> Name: <%= @user.name %> ID: <%= @user.id %>  </p>
 
 <%= link_to 'Add Food', new_food_path %>
-<table>
-  <thead>
-    <tr>
-      <th>Food</th>
-      <th>Quantity</th>
-      <th>Measurement unit</th>
-      <th>Unit price</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @foods.each do |food| %>
+<% if @foods.size > 0%>
+  <table>
+    <thead>
       <tr>
-        <td><%= food.name %></td>
-        <td><%= food.quantity %></td>
-        <td><%= food.measurement_unit %></td>
-        <td>$ <%= food.price %></td>
-        <td> DELETE LINK </td>
-           
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Measurement unit</th>
+        <th>Unit price</th>
+        <th>Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @foods.each do |food| %>
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.quantity %></td>
+          <td><%= food.measurement_unit %></td>
+          <td>$ <%= food.price %></td>
+          <td>
+            <%= form_for food, method: :delete, url: food_path(food), data: { confirm: 'Are you sure?' } do |f| %>
+              <%= f.submit "Delete", class: "btn btn-danger" %>
+            <% end %>
+          </td>
+            
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>There are no foods</p>
+<% end %>
 
 <%= link_to 'return', root_path %>
 
