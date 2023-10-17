@@ -1,1 +1,10 @@
-sadfsadf
+ <h1>List of foods of the user: </h1>
+ <p> Name: <%= @user.name %> </p>
+ <p> ID: <%= @user.id %> </p>
+
+
+<ul>
+  <% @foods.each do |f| %>
+    <li><%= f.name %></li>
+  <% end %>
+</ul>
