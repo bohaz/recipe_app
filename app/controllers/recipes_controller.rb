@@ -34,6 +34,15 @@ class RecipesController < ApplicationController
     end
   end
 
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+    if @recipe.user == current_user
+      @recipe.update(public: !@recipe.public)
+    end
+    redirect_to @recipe
+  end
+  
+
   private
 
   def recipe_params
