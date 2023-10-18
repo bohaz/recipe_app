@@ -1,0 +1,13 @@
+<h1>My recipies</h1>
+<%= link_to "Add New Recipe", new_recipe_path, class: "btn btn-primary" %>
+<ul>
+  <% @recipes.each do |recipe| %>
+    <li>
+      <%= link_to recipe.name, recipe_path(recipe) %> 
+      <% if recipe.user == current_user %>
+        <%= button_to 'Remove', recipe_path(recipe), method: :delete, data: { confirm: '¿Are you sure you want to delete this recipe?' } %>
+      <% end %>
+      <p><%= recipe.description %></p>
+    </li>
+  <% end %>
+</ul>
