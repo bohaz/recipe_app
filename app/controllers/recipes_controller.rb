@@ -17,12 +17,11 @@ class RecipesController < ApplicationController
       redirect_to recipes_path, alert: 'You are not authorized to delete this recipe.'
     end
   end
-  
 
   def new
     @recipe = current_user.recipes.new
   end
-  
+
   def create
     @recipe = current_user.recipes.new(recipe_params)
     if @recipe.save
@@ -31,11 +30,10 @@ class RecipesController < ApplicationController
       render :new
     end
   end
-  
+
   private
-  
+
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
-  
 end
