@@ -4,8 +4,9 @@
   <% @recipes.each do |recipe| %>
     <li>
       <%= link_to recipe.name, recipe_path(recipe) %> 
+      <p><%= recipe.description %></p>
       <% if recipe.user == current_user %>
-        <%= link_to 'Delete', recipe_path(recipe), method: :delete, data: { confirm: '¿Are you sure you want to delete this recipe?' } %>
+        <%= button_to 'Remove', recipe_path(recipe), method: :delete, data: { confirm: '¿Are you sure you want to delete this recipe?' } %>
       <% end %>
     </li>
   <% end %>
