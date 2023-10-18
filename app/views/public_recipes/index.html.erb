@@ -1,0 +1,15 @@
+<h2>List of all public recipes: </h2>
+
+<%# class PublicRecipesController < ApplicationController
+  def index
+    @user = current_user
+    @public_recipes = Recipe.where(public: true)
+  end
+end %>
+
+<% @public_recipes.each do |pr| %>
+  <p><%= link_to pr.name, recipe_path(pr) %></p>
+  <p><%= pr.user.name %></p>
+  <p>Total food items: ...</p>
+  <p>Total price: $ ...</p>  
+<% end %>
