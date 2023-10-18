@@ -23,11 +23,10 @@
           <td><%= food.measurement_unit %></td>
           <td>$ <%= food.price %></td>
           <td>
-            <%= form_for food, method: :delete, url: food_path(food), data: { confirm: 'Are you sure?' } do |f| %>
-              <%= f.submit "Delete", class: "btn btn-danger" %>
+            <%= form_for food, method: :delete, url: food_path(food) do |f| %>
+              <%= f.submit "Delete" %>
             <% end %>
-          </td>
-            
+          </td>            
         </tr>
       <% end %>
     </tbody>
@@ -35,5 +34,3 @@
 <% else %>
   <p>There are no foods</p>
 <% end %>
-
-
