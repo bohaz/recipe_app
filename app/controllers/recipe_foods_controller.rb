@@ -2,7 +2,7 @@ class RecipeFoodsController < ApplicationController
   def new
     @recipe_food = RecipeFood.new
     @available_foods = Food.includes(:user).where(user_id: @user.id)
-    @recipe_food = RecipeFood.includes(:food, :recipe).find(params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
   end
 
   def create
