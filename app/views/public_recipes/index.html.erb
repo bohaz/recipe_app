@@ -1,1 +1,13 @@
-sadf
+<h2>List of all public recipes: </h2>
+
+<%# class PublicRecipesController < ApplicationController
+  def index
+    @user = current_user
+    @public_recipes = Recipe.where(public: true)
+  end
+end %>
+
+<% @public_recipes.each do |pr| %>
+  <p><%= pr.name %></p>
+  <p><%= pr.user_id %></p>
+<% end %>
