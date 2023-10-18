@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :recipe_foods, except: [:new, :create]
 
   delete 'foods/:id', to: 'foods#destroy', as: 'delete_food'
-  get 'public_recipes', to: 'public_recipes#index'  
+  get 'public_recipes', to: 'public_recipes#index'
+  get 'shopping_list', to: 'shopping_lists#index'
   root "users#index"
 end
