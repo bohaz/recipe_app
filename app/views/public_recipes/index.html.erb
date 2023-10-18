@@ -8,6 +8,8 @@
 end %>
 
 <% @public_recipes.each do |pr| %>
-  <p><%= pr.name %></p>
-  <p><%= pr.user_id %></p>
+  <p><%= link_to pr.name, recipe_path(pr) %></p>
+  <p><%= pr.user.name %></p>
+  <p>Total food items: ...</p>
+  <p>Total price: $ ...</p>  
 <% end %>
