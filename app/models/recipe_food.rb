@@ -7,8 +7,6 @@ class RecipeFood < ApplicationRecord
   private
 
   def update_food_quantity
-    food.update(quantity: food.quantity - self.quantity)
+    food.update(quantity: food.quantity - quantity)
   end
-
- 
 end
