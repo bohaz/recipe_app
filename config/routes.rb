@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :recipes, except: [:update]
   delete 'foods/:id', to: 'foods#destroy', as: 'delete_food'
       root "users#index"
+  get 'public_recipes', to: 'public_recipes#index'
 end
