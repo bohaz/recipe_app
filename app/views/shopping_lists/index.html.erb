@@ -1,0 +1,6 @@
+<h1>Shopping List</h1>
+<ul>
+  <% @shopping_list.each do |food_name, quantity_needed| %>
+    <li><%= "#{food_name}: #{quantity_needed}" %></li>
+  <% end %>
+</ul>
