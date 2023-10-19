@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Foods', type: :feature do
+RSpec.feature 'Foods', type: :feature do
   let(:user) { create(:user) }
+  let!(:food1) { create(:food, user:, name: 'Apple', quantity: 5, measurement_unit: 'kg', price: 1.5) }
+  let!(:food2) { create(:food, user:, name: 'Banana', quantity: 3, measurement_unit: 'pcs', price: 0.5) }
   let!(:food1) { create(:food, user:, name: 'Apple', quantity: 5, measurement_unit: 'kg', price: 1.5) }
   let!(:food2) { create(:food, user:, name: 'Banana', quantity: 3, measurement_unit: 'pcs', price: 0.5) }
 
@@ -21,9 +24,11 @@ RSpec.feature 'Foods', type: :feature do
   end
 
   scenario 'User sees a message if there are no foods' do
+  scenario 'User sees a message if there are no foods' do
     Food.destroy_all
     visit foods_path
 
+    expect(page).to have_content('There are no foods')
     expect(page).to have_content('There are no foods')
   end
 end
