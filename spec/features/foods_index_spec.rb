@@ -1,21 +1,21 @@
 require 'rails_helper'
 
-RSpec.feature "Foods", type: :feature do
+RSpec.feature 'Foods', type: :feature do
   let(:user) { create(:user) }
-  let!(:food1) { create(:food, user: user, name: "Apple", quantity: 5, measurement_unit: "kg", price: 1.5) }
-  let!(:food2) { create(:food, user: user, name: "Banana", quantity: 3, measurement_unit: "pcs", price: 0.5) }
+  let!(:food1) { create(:food, user:, name: 'Apple', quantity: 5, measurement_unit: 'kg', price: 1.5) }
+  let!(:food2) { create(:food, user:, name: 'Banana', quantity: 3, measurement_unit: 'pcs', price: 0.5) }
 
   before do
     sign_in user
     visit foods_path
   end
 
-  scenario "User sees their name and ID on the page" do
+  scenario 'User sees their name and ID on the page' do
     expect(page).to have_content("Name: #{user.name}")
     expect(page).to have_content("ID: #{user.id}")
   end
 
-  scenario "User sees the list of their foods" do
+  scenario 'User sees the list of their foods' do
     expect(page).to have_content(food1.name)
     expect(page).to have_content(food1.quantity)
     expect(page).to have_content(food1.measurement_unit)
@@ -27,10 +27,10 @@ RSpec.feature "Foods", type: :feature do
     expect(page).to have_content("$ #{food2.price}")
   end
 
-  scenario "User sees a message if there are no foods" do
+  scenario 'User sees a message if there are no foods' do
     Food.destroy_all
     visit foods_path
 
-    expect(page).to have_content("There are no foods")
+    expect(page).to have_content('There are no foods')
   end
 end
