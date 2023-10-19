@@ -10,20 +10,20 @@ class ShoppingListsController < ApplicationController
     shopping_list = {}
     total_value = 0
     total_items = 0
-  
+
     @user.foods.each do |food|
-      if food.quantity.negative?
-        quantity_needed = -food.quantity
-        total_value += quantity_needed * food.price
-        total_items += 1
-        shopping_list[food.name] = { quantity: quantity_needed, price: food.price }
-      end
+      next unless food.quantity.negative?
+
+      quantity_needed = -food.quantity
+      total_value += quantity_needed * food.price
+      total_items += 1
+      shopping_list[food.name] = { quantity: quantity_needed, price: food.price }
     end
-  
+
     {
-      shopping_list: shopping_list,
-      total_value: total_value,
-      total_items: total_items
+      shopping_list:,
+      total_value:,
+      total_items:
     }
   end
 end
