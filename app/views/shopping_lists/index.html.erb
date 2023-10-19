@@ -15,7 +15,7 @@
   </thead>
   <tbody>
     <% @shopping_list[:shopping_list].each do |food_name, data| %>
-      <tr class="tr-list">
+      <tr class="tr-list li">
         <td class="food-name"><%= food_name %></td>        
         <td class="food-quantity"><%= data[:quantity] %></td>
         <td class="food-price">$<%= data[:price] %></td>

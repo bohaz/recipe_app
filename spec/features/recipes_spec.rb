@@ -10,10 +10,6 @@ RSpec.feature 'Recipes', type: :feature do
     visit recipes_path
   end
 
-  scenario "User sees the title 'My recipies'" do
-    expect(page).to have_content('My recipies')
-  end
-
   scenario 'User sees their recipes and not those of other users' do
     expect(page).to have_link(my_recipe.name, href: recipe_path(my_recipe))
     expect(page).to have_content(my_recipe.description)

@@ -1,15 +1,11 @@
 <%# path: app/views/foods/index.html.erb %>
 
- <h2 class="h2">List of foods of the user: </h2>
- <p class="p-user-name"> Name: <%= @user.name %> ID: <%= @user.id %>  </p>
-
 <%= link_to 'Add Food', new_food_path, class:"btn" %>
 <% if @foods.size > 0%>
   <table>
     <thead>
       <tr class="tr-head">
         <th>Food</th>
-        <th>Quantity</th>
         <th>Measurement unit</th>
         <th>Unit price</th>
         <th>Actions</th>
@@ -17,9 +13,8 @@
     </thead>
     <tbody>
       <% @foods.each do |food| %>
-        <tr class="tr-list">
+        <tr class="tr-list li">
           <td class="food-name"><%= food.name %></td>
-          <td class="food-quantity"><%= food.quantity %></td>
           <td class="food-measurement-unit"><%= food.measurement_unit %></td>
           <td class="food-price">$ <%= food.price %></td>
           <td>

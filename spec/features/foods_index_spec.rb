@@ -10,19 +10,12 @@ RSpec.feature 'Foods', type: :feature do
     visit foods_path
   end
 
-  scenario 'User sees their name and ID on the page' do
-    expect(page).to have_content("Name: #{user.name}")
-    expect(page).to have_content("ID: #{user.id}")
-  end
-
   scenario 'User sees the list of their foods' do
     expect(page).to have_content(food1.name)
-    expect(page).to have_content(food1.quantity)
     expect(page).to have_content(food1.measurement_unit)
     expect(page).to have_content("$ #{food1.price}")
 
     expect(page).to have_content(food2.name)
-    expect(page).to have_content(food2.quantity)
     expect(page).to have_content(food2.measurement_unit)
     expect(page).to have_content("$ #{food2.price}")
   end

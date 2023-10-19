@@ -1,14 +1,15 @@
 <%# path: app/views/recipes/index.html.erb %>
 
-<h1>My recipies</h1>
-<%= link_to "Add New Recipe", new_recipe_path, class: "add-new-recipe" %>
-<ul>
+<%= link_to "Add New Recipe", new_recipe_path, class: "add-new-recipe btn" %>
+<ul class="recipes-index-ul">
   <% @recipes.each do |recipe| %>
-    <li class="recipes-index-li">
-      <%= link_to recipe.name, recipe_path(recipe), class:"recipe-name" %> 
-      <% if recipe.user == current_user %>
-        <%= button_to 'Remove', recipe_path(recipe), method: :delete, class:"remove" %>
-      <% end %>
+    <li class="recipes-index-li li">
+      <div class="left">
+        <%= link_to recipe.name, recipe_path(recipe), class:"recipe-name btn" %> 
+        <% if recipe.user == current_user %>
+          <%= button_to 'Remove', recipe_path(recipe), method: :delete, class:"remove btn" %>
+        <% end %>
+      </div>
       <p class="recipe-description"><%= recipe.description %></p>
     </li>
   <% end %>

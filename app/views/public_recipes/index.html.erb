@@ -1,10 +1,18 @@
 <%# path: app/views/public_recipes/index.html.erb %>
 
-<h2>List of all public recipes: </h2>
+<h2>Public recipes</h2>
 
-<% @public_recipes.each do |pr| %>
-  <p class="pr-name"><%= link_to pr.name, recipe_path(pr) %></p>
-  <p class="pr-user-name"><%= pr.user.name %></p>
-  <p class="pr-recipe-foods-count">Total food items: <%= pr.recipe_foods.count %></p>
-  <p class="pr-total-price">Total price: $ ... <%= pr.total_price %></p>
-<% end %>
+<ul class="recipes-index-ul">
+  <% @public_recipes.each do |pr| %>
+    <li class="li">
+      <div class="left">
+        <p class="pr-name"><%= link_to pr.name, recipe_path(pr) %></p>
+        <p class="pr-user-name">By: <%= pr.user.name %></p>
+      </div>
+      <div class="recipe-description">
+        <p class="pr-recipe-foods-count">Total food items: <%= pr.recipe_foods.count %></p>
+        <p class="pr-total-price">Total price: $ ... <%= pr.total_price %></p>
+      </div>
+    </li>
+  <% end %>
+<ul>

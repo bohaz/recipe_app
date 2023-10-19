@@ -10,8 +10,8 @@ RSpec.feature 'PublicRecipes', type: :feature do
     visit public_recipes_path
   end
 
-  scenario "User sees the title 'List of all public recipes:'" do
-    expect(page).to have_content('List of all public recipes:')
+  scenario "User sees the title 'Public recipes'" do
+    expect(page).to have_content('Public recipes')
   end
 
   scenario 'User sees the public recipes' do

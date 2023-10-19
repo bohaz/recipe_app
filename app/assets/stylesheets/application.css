@@ -65,3 +65,15 @@ a {
   text-decoration: none;
   color: black;
 }
+
+/* recipes index */
+
+.recipes-index-ul {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.recipes-index-ul li {
+  display: flex;
+}
