@@ -15,7 +15,7 @@ RSpec.describe RecipeFood, type: :model do
 
   describe 'callbacks' do
     let(:food) { create(:food, quantity: 10) }
-    let(:recipe_food) { create(:recipe_food, food: food, quantity: 5) }
+    let(:recipe_food) { create(:recipe_food, food:, quantity: 5) }
 
     context 'after_create :decrease_food_quantity' do
       it 'decreases the food quantity by the recipe food quantity' do

@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe FoodsController, type: :controller do
   let(:user) { create(:user) }
-  let(:food) { create(:food, user: user) }
-  
+  let(:food) { create(:food, user:) }
+
   before do
-    sign_in user  # Asegúrate de tener un helper para simular que un usuario está autenticado.
+    sign_in user # Asegúrate de tener un helper para simular que un usuario está autenticado.
   end
 
   describe 'GET #index' do
@@ -30,9 +30,9 @@ RSpec.describe FoodsController, type: :controller do
   describe 'POST #create' do
     context 'with valid attributes' do
       it 'creates a new food' do
-        expect {
+        expect do
           post :create, params: { food: attributes_for(:food) }
-        }.to change(Food, :count).by(1)
+        end.to change(Food, :count).by(1)
       end
 
       it 'redirects to the foods index' do
@@ -43,9 +43,9 @@ RSpec.describe FoodsController, type: :controller do
 
     context 'with invalid attributes' do
       it 'does not save the food' do
-        expect {
+        expect do
           post :create, params: { food: attributes_for(:food, name: nil) }
-        }.to_not change(Food, :count)
+        end.to_not change(Food, :count)
       end
 
       it 're-renders the new method' do
@@ -56,20 +56,16 @@ RSpec.describe FoodsController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-  it 'deletes the food' do
-    food
-    expect {
+    it 'deletes the food' do
+      food
+      expect do
+        delete :destroy, params: { id: food.id }
+      end.to change(Food, :count).by(-1)
+    end
+
+    it 'redirects to the foods index' do
       delete :destroy, params: { id: food.id }
-    }.to change(Food, :count).by(-1)
-  end
-
-  it 'redirects to the foods index' do
-    delete :destroy, params: { id: food.id }
-    expect(response).to redirect_to foods_path
+      expect(response).to redirect_to foods_path
+    end
   end
 end
-
-end
-
-
-   

@@ -4,7 +4,7 @@ RSpec.describe UsersController, type: :controller do
   let(:user) { create(:user) }
 
   before do
-    sign_in user  
+    sign_in user
   end
 
   describe 'GET #index' do
