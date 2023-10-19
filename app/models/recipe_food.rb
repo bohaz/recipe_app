@@ -8,7 +8,7 @@ class RecipeFood < ApplicationRecord
   before_destroy :return_food_quantity
 
   attr_accessor :previous_quantity
-  
+
   private
 
   def decrease_food_quantity
@@ -16,7 +16,7 @@ class RecipeFood < ApplicationRecord
   end
 
   def store_previous_quantity
-    self.previous_quantity = self.quantity_was
+    self.previous_quantity = quantity_was
   end
 
   def update_food_quantity_after_edit
