@@ -1,15 +1,11 @@
 <%# path: app/views/foods/index.html.erb %>
 
- <h2>List of foods of the user: </h2>
- <p> Name: <%= @user.name %> ID: <%= @user.id %>  </p>
-
-<%= link_to 'Add Food', new_food_path %>
+<%= link_to 'Add Food', new_food_path, class:"btn" %>
 <% if @foods.size > 0%>
   <table>
     <thead>
-      <tr>
+      <tr class="tr-head">
         <th>Food</th>
-        <th>Quantity</th>
         <th>Measurement unit</th>
         <th>Unit price</th>
         <th>Actions</th>
@@ -17,14 +13,13 @@
     </thead>
     <tbody>
       <% @foods.each do |food| %>
-        <tr>
-          <td><%= food.name %></td>
-          <td><%= food.quantity %></td>
-          <td><%= food.measurement_unit %></td>
-          <td>$ <%= food.price %></td>
+        <tr class="tr-list li">
+          <td class="food-name"><%= food.name %></td>
+          <td class="food-measurement-unit"><%= food.measurement_unit %></td>
+          <td class="food-price">$ <%= food.price %></td>
           <td>
             <%= form_for food, method: :delete, url: food_path(food) do |f| %>
-              <%= f.submit "Delete" %>
+              <%= f.submit "Delete", class:"btn" %>
             <% end %>
           </td>            
         </tr>
@@ -32,5 +27,5 @@
     </tbody>
   </table>
 <% else %>
-  <p>There are no foods</p>
+  <p class="p-no-foods">There are no foods</p>
 <% end %>

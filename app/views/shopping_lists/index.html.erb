@@ -2,12 +2,12 @@
 
 <h1>Shopping List</h1>
 
-<p>Amount of items to buy: <%= @shopping_list[:total_items] %></p>
-<p>Total Value of food needed: $ <%= @shopping_list[:total_value] %></p>
+<p class="amount-of-items">Amount of items to buy: <%= @shopping_list[:total_items] %></p>
+<p class="total-value">Total Value of food needed: $ <%= @shopping_list[:total_value] %></p>
 
 <table>
   <thead>
-    <tr>
+    <tr class="tr-head">
       <th>Food</th>
       <th>Quantity</th>
       <th>Price</th>
@@ -15,10 +15,10 @@
   </thead>
   <tbody>
     <% @shopping_list[:shopping_list].each do |food_name, data| %>
-      <tr>
-        <td><%= food_name %></td>        
-        <td><%= data[:quantity] %></td>
-        <td>$<%= data[:price] %></td>
+      <tr class="tr-list li">
+        <td class="food-name"><%= food_name %></td>        
+        <td class="food-quantity"><%= data[:quantity] %></td>
+        <td class="food-price">$<%= data[:price] %></td>
       </tr>
     <% end %>
   </tbody>
