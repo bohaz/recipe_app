@@ -18,7 +18,9 @@
 
 <h3>Steps:</h3>
 <p>Steps go here...</p>
-<%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn btn-primary' %>
+<% if @recipe.user == current_user %>
+  <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn btn-primary' %>
+<% end%>
 <%= link_to "Shopping List", shopping_list_path %>
 <!-- Foods / Ingredients for the Recipe -->
 <h3>Ingredients:</h3>
@@ -40,10 +42,8 @@
     <td>
     <% if @recipe.user == current_user %>
     <%= link_to 'Modify', edit_recipe_food_path(recipe_food), class: 'btn btn-primary' %>
-  <%= button_to 'Remove', recipe_food_path(recipe_food), method: :delete, data: { confirm: '¿Are you sure you want to delete this ingredient?' }, class: 'btn btn-danger' %>
-
+    <%= button_to 'Remove', recipe_food_path(recipe_food), method: :delete, data: { confirm: '¿Are you sure you want to delete this ingredient?' }, class: 'btn btn-danger' %>
    <% end %>
-
     </td>
   </tr>
 
