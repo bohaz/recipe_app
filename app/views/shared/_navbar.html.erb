@@ -1,3 +1,5 @@
+<%# path: app/views/shared/_navbar.html.erb %>
+
 <nav>
   <div>
     <%= image_tag("hero.png", alt: "A bowl and a mixer logo for the Recipes App", class: "navbar-image") %>
@@ -8,7 +10,7 @@
     <li><%= link_to "Foods", foods_path %></li>
     <li><%= link_to "Recipes", recipes_path %></li>
     <li><%= link_to "Public Recipes", public_recipes_path %></li>
-    <li>general shopping list</li>
+    <li><%= link_to "Shopping List", shopping_list_path %></li>
     <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %></li>
   </ul>
 </nav>
