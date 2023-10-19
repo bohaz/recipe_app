@@ -1,7 +1,7 @@
 class RecipeFoodsController < ApplicationController
   def new
     @recipe_food = RecipeFood.new
-    @available_foods = Food.includes(:user).where(user_id: @user.id)
+    @available_foods = available_foods_for_recipe
     @recipe = Recipe.find(params[:recipe_id])
   end
 
@@ -38,5 +38,12 @@ class RecipeFoodsController < ApplicationController
 
   def recipe_food_params
     params.require(:recipe_food).permit(:recipe_id, :food_id, :quantity)
+  end
+
+  def available_foods_for_recipe
+    # Get the foods that are not used in the current recipe
+    recipe = Recipe.find(params[:recipe_id])
+    used_food_ids = recipe.recipe_foods.pluck(:food_id)
+    Food.includes(:user).where(user_id: current_user.id).where.not(id: used_food_ids)
   end
 end
