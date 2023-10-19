@@ -2,12 +2,12 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!
   def index
     @user = current_user
-    @recipes = current_user.recipes
+    @recipes = current_user.recipes.includes(:foods, :recipe_foods)
   end
 
   def show
     @user = current_user
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.includes(:foods, :recipe_foods).find(params[:id])
   end
 
   def destroy
