@@ -43,3 +43,25 @@ li {
   width: fit-content;
   margin: 0 auto;
 }
+
+/* users index */
+
+.li:nth-child(even) {
+  background-color: lightgray;
+}
+
+.li:nth-child(odd) {
+  background-color: rgb(221, 221, 221);
+}
+
+.btn {
+  background-color: white;
+  padding: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
