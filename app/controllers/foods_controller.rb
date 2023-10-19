@@ -1,7 +1,7 @@
 class FoodsController < ApplicationController
   def index
     @user = current_user
-    @foods = Food.all.where(user_id: @user.id)
+    @foods = Food.includes(:user).where(user_id: @user.id)
   end
 
   def new
