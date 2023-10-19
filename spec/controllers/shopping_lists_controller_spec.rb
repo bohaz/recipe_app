@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe ShoppingListsController, type: :controller do
   describe 'GET #index' do
     before do
-      @user = FactoryBot.create(:user) 
+      @user = FactoryBot.create(:user)
 
-      sign_in @user 
+      sign_in @user
       get :index
     end
 
