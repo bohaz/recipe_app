@@ -1,0 +1,31 @@
+<%# path: app/views/foods/index.html.erb %>
+
+<%= link_to 'Add Food', new_food_path, class:"btn" %>
+<% if @foods.size > 0%>
+  <table>
+    <thead>
+      <tr class="tr-head">
+        <th>Food</th>
+        <th>Measurement unit</th>
+        <th>Unit price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |food| %>
+        <tr class="tr-list li">
+          <td class="food-name"><%= food.name %></td>
+          <td class="food-measurement-unit"><%= food.measurement_unit %></td>
+          <td class="food-price">$ <%= food.price %></td>
+          <td>
+            <%= form_for food, method: :delete, url: food_path(food) do |f| %>
+              <%= f.submit "Delete", class:"btn" %>
+            <% end %>
+          </td>            
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="p-no-foods">There are no foods</p>
+<% end %>

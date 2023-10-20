@@ -1,0 +1,14 @@
+<%# path: app/views/recipe_foods/edit.html.erb %>
+
+<h2>Edit Ingredient Quantity for <%= @recipe_food.recipe.name %></h2>
+
+<%= form_with(model: @recipe_food, url: recipe_food_path(@recipe_food), method: :patch) do |form| %>
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity, step: 0.1 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update Ingredient", class: 'btn' %>
+  </div>
+<% end %>
